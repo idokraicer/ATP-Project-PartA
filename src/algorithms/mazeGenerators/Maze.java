@@ -37,7 +37,7 @@ public class Maze {
         for (int i = 0; i < maze.length; i++) {
             for (int j = 0; j < maze[i].length; j++) {
                 if (maze[i][j] == 1) {
-                    System.out.print("# ");
+                    System.out.print("□ ");
                 } else {
                     System.out.print("  ");
                 }

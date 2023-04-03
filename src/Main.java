@@ -5,6 +5,6 @@ public class Main {
 
         MyMazeGenerator myMazeGenerator = new MyMazeGenerator(50,50);
         myMazeGenerator.maze.print();
-        System.out.println(myMazeGenerator.measureAlgorithmTimeMillis(1000,1000));
+        System.out.println((myMazeGenerator.measureAlgorithmTimeMillis(1000,1000))/1000+" seconds");
     }
 }
