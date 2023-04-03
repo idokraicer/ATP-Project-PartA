@@ -1,10 +1,12 @@
 package algorithms.mazeGenerators;
 
+import java.util.Arrays;
+
 public class Maze {
-    public int[][] maze;
+    private int[][] maze;
 
     public Maze(int rows, int cols) {
-        this.maze = new int[rows][cols];
+        maze = new int[rows][cols];
     }
 
     public int[][] getMaze() {
@@ -32,16 +34,24 @@ public class Maze {
     }
 
     public void print() {
-        for (int[] ints : maze) {
-            for (int j = 0; j < maze[0].length; j++) {
-                if (ints[j] == 0) {
-                    System.out.print(" ");
+        for (int i = 0; i < maze.length; i++) {
+            for (int j = 0; j < maze[i].length; j++) {
+                if (maze[i][j] == 1) {
+                    System.out.print("# ");
                 } else {
-                    System.out.print("#");
+                    System.out.print("  ");
                 }
             }
             System.out.println();
         }
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int[] row : maze) {
+            sb.append(Arrays.toString(row)).append("\n");
+        }
+        return sb.toString();
+    }
 }

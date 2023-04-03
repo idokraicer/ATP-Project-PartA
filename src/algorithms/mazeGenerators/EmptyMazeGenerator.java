@@ -7,7 +7,7 @@ public class EmptyMazeGenerator extends AMazeGenerator{
     public Maze generate(int rows, int columns) {
         Maze emptyMaze = new Maze(rows, columns);
         for (int i = 0; i < rows; i++) {
-            Arrays.fill(emptyMaze.maze[i], 0);
+            Arrays.fill(emptyMaze.getMaze()[i], 0);
         }
         return emptyMaze;
     }
