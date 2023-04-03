@@ -8,13 +8,13 @@ import java.util.Stack;
 public class MyMazeGenerator extends AMazeGenerator {
     public Maze maze;
 
-    public MyMazeGenerator(int rows, int columns) {
-        maze = new Maze(rows, columns);
-        generate(rows, columns);
+    public MyMazeGenerator() {
+        maze = null;
     }
 
     @Override
     public Maze generate(int rows, int columns) {
+        maze = new Maze(rows, columns);
         if (rows < 2 || columns < 2) {
             throw new IllegalArgumentException("Maze dimensions must be at least 2x2");
         }

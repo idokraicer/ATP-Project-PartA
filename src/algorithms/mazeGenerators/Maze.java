@@ -1,9 +1,12 @@
 package algorithms.mazeGenerators;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Maze {
     private int[][] maze;
+    private Position startPosition;
+    private Position goalPosition;
 
     public Maze(int rows, int cols) {
         maze = new int[rows][cols];
@@ -53,5 +56,22 @@ public class Maze {
             sb.append(Arrays.toString(row)).append("\n");
         }
         return sb.toString();
+    }
+
+    public Position getStartPosition() {
+        return this.startPosition;
+    }
+
+    public void setStartPosition(int row, int col) {
+        this.startPosition = new Position(row, col);
+    }
+
+
+    public void setGoalPosition(Position goalPosition) {
+        this.goalPosition = goalPosition;
+    }
+
+    public Position getGoalPosition() {
+        return this.goalPosition;
     }
 }
