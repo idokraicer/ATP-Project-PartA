@@ -30,4 +30,18 @@ public class Maze {
     public int getColumns() {
         return maze[0].length;
     }
+
+    public void print() {
+        for (int[] ints : maze) {
+            for (int j = 0; j < maze[0].length; j++) {
+                if (ints[j] == 0) {
+                    System.out.print(" ");
+                } else {
+                    System.out.print("#");
+                }
+            }
+            System.out.println();
+        }
+    }
+
 }
