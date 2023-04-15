@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Stack;
 
 public class MyMazeGenerator extends AMazeGenerator {
-    public Maze maze;
+    //public Maze maze;
 
     public MyMazeGenerator() {
         maze = null;
@@ -19,7 +19,6 @@ public class MyMazeGenerator extends AMazeGenerator {
             throw new IllegalArgumentException("Maze dimensions must be at least 2x2");
         }
 
-        maze = new Maze(rows, columns);
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 maze.setWall(i, j); // start with all cells as walls
@@ -27,8 +26,10 @@ public class MyMazeGenerator extends AMazeGenerator {
         }
 
         // Choose a random starting cell and carve a path
-        int startRow = (int) (Math.random() * (rows - 2)) + 1;
+        int startRow = 0;//(int) (Math.random() * (rows - 2)) + 1;
         int startCol = (int) (Math.random() * (columns - 2)) + 1;
+        maze.setStartPosition(startRow, startCol);
+        maze.setGoalPosition(rows-1,columns-1); // Delete this after
         iterativeDFS(startRow, startCol);
 
         return maze;

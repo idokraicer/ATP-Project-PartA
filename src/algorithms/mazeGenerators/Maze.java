@@ -37,9 +37,14 @@ public class Maze {
     }
 
     public void print() {
+
         for (int i = 0; i < maze.length; i++) {
             for (int j = 0; j < maze[i].length; j++) {
-                if (maze[i][j] == 1) {
+                if (i == startPosition.getRowIndex() && j == startPosition.getColumnIndex()) {
+                    System.out.println("S ");
+                } else if (i == goalPosition.getRowIndex() && j == goalPosition.getColumnIndex()) {
+                    System.out.println("E ");
+                } else if (maze[i][j] == 1) {
                     System.out.print("□ ");
                 } else {
                     System.out.print("  ");
@@ -67,11 +72,30 @@ public class Maze {
     }
 
 
-    public void setGoalPosition(Position goalPosition) {
-        this.goalPosition = goalPosition;
+    public void setGoalPosition(int row, int col) {
+        this.goalPosition = new Position(row, col);
     }
 
     public Position getGoalPosition() {
         return this.goalPosition;
+    }
+
+    public boolean isValidPosition(Position p) {
+        if ((p.getColumnIndex() >= getRows()
+                || p.getRowIndex() >= getColumns()
+                || p.getColumnIndex() < 0
+                || p.getRowIndex() < 0)
+                && !isWall(p.getRowIndex(), p.getColumnIndex()))
+            return false;
+        return true;
+    }
+    public boolean isValidPosition(int x, int y) {
+        if (x >= getRows()
+                || y >= getColumns()
+                || x < 0
+                || y < 0
+                || isWall(x, y))
+            return false;
+        return true;
     }
 }

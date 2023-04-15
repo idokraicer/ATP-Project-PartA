@@ -1,5 +1,7 @@
 package test;
 import algorithms.mazeGenerators.*;
+import algorithms.search.MazeState;
+
 public class RunMazeGenerator {
     public static void main(String[] args) {
         testMazeGenerator(new EmptyMazeGenerator());
@@ -15,6 +17,8 @@ public class RunMazeGenerator {
         maze.print();
     // get the maze entrance
         Position startPosition = maze.getStartPosition();
+        MazeState s = new MazeState(maze, new Position(5,5));
+
 // print the start position
         System.out.println(String.format("Start Position: %s", startPosition)); // format "{row,column}"
 // prints the maze exit position
