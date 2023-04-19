@@ -2,6 +2,10 @@ package algorithms.search;
 
 import java.util.*;
 
+/**
+ * This class is the abstract searching algorithm class.
+ * It implements the ISearchingAlgorithm interface.
+ */
 public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
     protected PriorityQueue<AState> unvisited;
     protected Stack<AState> unvisited_stack;

@@ -5,6 +5,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * This class is the simple maze generator using DFS.
+ * It extends the AMazeGenerator class.
+ */
 public class MyMazeGenerator extends AMazeGenerator {
 
     public MyMazeGenerator() {

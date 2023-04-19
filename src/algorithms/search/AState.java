@@ -2,6 +2,10 @@ package algorithms.search;
 
 import algorithms.mazeGenerators.Position;
 
+/**
+ * This class is the abstract class for all the states.
+ * It contains the position of the state, the predecessor of the state, the cost of the state and the max depth of the state.
+ */
 public abstract class AState {
 
     protected Position cords;

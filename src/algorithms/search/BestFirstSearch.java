@@ -1,5 +1,9 @@
 package algorithms.search;
 
+/**
+ * This class is the best first search class.
+ * It extends the BreadthFirstSearch class.
+ */
 public class BestFirstSearch extends BreadthFirstSearch {
 
     @Override

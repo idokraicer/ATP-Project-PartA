@@ -1,5 +1,9 @@
 package algorithms.search;
 
+/**
+ * This class is the breadth first search class.
+ * It extends the ASearchingAlgorithm class.
+ */
 public class BreadthFirstSearch extends ASearchingAlgorithm {
 
     @Override

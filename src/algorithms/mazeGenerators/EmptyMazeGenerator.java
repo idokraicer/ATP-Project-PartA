@@ -2,6 +2,10 @@ package algorithms.mazeGenerators;
 
 import java.util.Arrays;
 
+/**
+ * This class is the empty maze generator where all the cells are free.
+ * It extends the AMazeGenerator class.
+ */
 public class EmptyMazeGenerator extends AMazeGenerator{
     @Override
     public Maze generate(int rows, int columns) {

@@ -1,5 +1,9 @@
 package algorithms.mazeGenerators;
 
+/**
+ * This class is the position class.
+ * It contains the row and column of the position.
+ */
 public class Position {
     private int row;
     private int column;

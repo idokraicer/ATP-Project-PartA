@@ -2,6 +2,10 @@ package algorithms.search;
 
 import java.util.ArrayList;
 
+/**
+ * This class is the solution class.
+ * It contains the solution path.
+ */
 public class Solution {
     private ArrayList<AState> path;
 

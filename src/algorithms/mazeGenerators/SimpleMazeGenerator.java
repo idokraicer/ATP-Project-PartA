@@ -2,6 +2,10 @@ package algorithms.mazeGenerators;
 
 import java.util.Random;
 
+/**
+ * This class is the simple maze generator where the cells are randomly set to be free or walls.
+ * It extends the AMazeGenerator class.
+ */
 public class SimpleMazeGenerator extends AMazeGenerator{
 
     @Override

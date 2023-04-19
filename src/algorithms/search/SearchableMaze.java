@@ -5,6 +5,11 @@ import algorithms.mazeGenerators.Position;
 
 import java.util.ArrayList;
 
+/**
+ * This class is the searchable maze class.
+ * It contains the maze and the grid.
+ * It implements the ISearchable interface.
+ */
 public class SearchableMaze implements ISearchable {
     private int[][] grid;
     private Maze maze;
