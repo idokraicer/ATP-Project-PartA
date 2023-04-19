@@ -35,13 +35,11 @@ public class MyMazeGenerator extends AMazeGenerator {
         long startTime = System.currentTimeMillis();
         int goalRow, goalCol;
         do {
-            System.out.println("Trying again");
             if (System.currentTimeMillis() - startTime > 10000) {
                 return generate(rows, columns);
             }
             goalRow = (int) (Math.random() * (rows - 2)) + 1;
             goalCol = (int) (Math.random() * (columns - 2)) + 1;
-            System.out.println("Goal: "+goalRow+","+goalCol);
         } while (!isPathBetween(startRow, startCol, goalRow, goalCol));
 
         maze.setGoalPosition(new Position(goalRow, goalCol));
