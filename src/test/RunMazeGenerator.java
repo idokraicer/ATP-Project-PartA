@@ -17,7 +17,6 @@ public class RunMazeGenerator {
         maze.print();
     // get the maze entrance
         Position startPosition = maze.getStartPosition();
-        MazeState s = new MazeState(maze, new Position(5,5));
 
 // print the start position
         System.out.println(String.format("Start Position: %s", startPosition)); // format "{row,column}"

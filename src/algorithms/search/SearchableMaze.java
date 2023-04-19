@@ -15,5 +15,6 @@ public class SearchableMaze implements ISearchable {
         grid = maze.getMaze();
         start = maze.getStartPosition();
         goal = maze.getGoalPosition();
+
     }
 }

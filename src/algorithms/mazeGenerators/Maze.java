@@ -98,4 +98,12 @@ public class Maze {
             return false;
         return true;
     }
+
+    public void setGoalPosition(Position position) {
+        this.goalPosition = position;
+    }
+
+    public void setStartPosition(Position position) {
+        this.startPosition = position;
+    }
 }

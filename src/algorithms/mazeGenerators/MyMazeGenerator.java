@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Stack;
 
 public class MyMazeGenerator extends AMazeGenerator {
-    //public Maze maze;
 
     public MyMazeGenerator() {
         maze = null;
@@ -19,21 +18,76 @@ public class MyMazeGenerator extends AMazeGenerator {
             throw new IllegalArgumentException("Maze dimensions must be at least 2x2");
         }
 
+        // Set all cells as walls
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                maze.setWall(i, j); // start with all cells as walls
+                maze.setWall(i, j);
             }
         }
 
         // Choose a random starting cell and carve a path
-        int startRow = 0;//(int) (Math.random() * (rows - 2)) + 1;
+        int startRow = (int) (Math.random() * (rows - 2)) + 1;
         int startCol = (int) (Math.random() * (columns - 2)) + 1;
-        maze.setStartPosition(startRow, startCol);
-        maze.setGoalPosition(rows-1,columns-1); // Delete this after
-        iterativeDFS(startRow, startCol);
+        maze.setStartPosition(new Position(0, startCol));
+        iterativeDFS(0, startCol);
+
+        // Choose a random goal position and ensure there is a safe path to it
+        long startTime = System.currentTimeMillis();
+        int goalRow, goalCol;
+        do {
+            System.out.println("Trying again");
+            if (System.currentTimeMillis() - startTime > 10000) {
+                return generate(rows, columns);
+            }
+            goalRow = (int) (Math.random() * (rows - 2)) + 1;
+            goalCol = (int) (Math.random() * (columns - 2)) + 1;
+            System.out.println("Goal: "+goalRow+","+goalCol);
+        } while (!isPathBetween(startRow, startCol, goalRow, goalCol));
+
+        maze.setGoalPosition(new Position(goalRow, goalCol));
 
         return maze;
     }
+
+    private boolean isPathBetween(int startRow, int startCol, int goalRow, int goalCol) { //Using DFS
+        boolean[][] visited = new boolean[maze.getRows()][maze.getColumns()];
+        Stack<int[]> stack = new Stack<>();
+        stack.push(new int[]{startRow, startCol});
+        visited[startRow][startCol] = true;
+
+        while (!stack.isEmpty()) {
+            int[] curr = stack.pop();
+            int currRow = curr[0];
+            int currCol = curr[1];
+
+            if (currRow == goalRow && currCol == goalCol) {
+                return true; // Found a path to the goal
+            }
+
+            if (currRow > 0 && !visited[currRow - 1][currCol] && !maze.isWall(currRow - 1, currCol)) {
+                stack.push(new int[]{currRow - 1, currCol});
+                visited[currRow - 1][currCol] = true;
+            }
+
+            if (currRow < maze.getRows() - 1 && !visited[currRow + 1][currCol] && !maze.isWall(currRow + 1, currCol)) {
+                stack.push(new int[]{currRow + 1, currCol});
+                visited[currRow + 1][currCol] = true;
+            }
+
+            if (currCol > 0 && !visited[currRow][currCol - 1] && !maze.isWall(currRow, currCol - 1)) {
+                stack.push(new int[]{currRow, currCol - 1});
+                visited[currRow][currCol - 1] = true;
+            }
+
+            if (currCol < maze.getColumns() - 1 && !visited[currRow][currCol + 1] && !maze.isWall(currRow, currCol + 1)) {
+                stack.push(new int[]{currRow, currCol + 1});
+                visited[currRow][currCol + 1] = true;
+            }
+        }
+
+        return false; // No path to the goal
+    }
+
 
     private void iterativeDFS(int startRow, int startCol) {
         Stack<int[]> stack = new Stack<>();

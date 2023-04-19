@@ -9,6 +9,10 @@ public class Position {
         this.column = column;
     }
 
+    public boolean compare(Position other){
+        return this.row == other.row && this.column == other.column;
+    }
+
     public int getRowIndex() {
         return row;
     }
